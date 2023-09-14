@@ -7,7 +7,12 @@ const riskNames = [
   "Liquidity Risk",
   "Volatility Risk",
 ];
+
+const startButton = document.getElementById("start");
+
 var onceOnly = 0;
+var final = document.getElementById("final");
+
 const riskDefinitionsMap = {
   "The potential for fluctuations in interest rates to impact the value of investments or financial instruments.":
     "Interest Rate Risk",
@@ -45,33 +50,44 @@ customCursor.src = "./assets/cursor.png";
 customCursor.style.position = "absolute";
 customCursor.style.pointerEvents = "none";
 customCursor.style.height = "150px";
+customCursor.style.display = "none";
 
 document.body.appendChild(customCursor);
-document.body.style.cursor = "none";
+
+var gameStarted = false;
 
 function updateCursorPosition(event) {
-  const isCursorOverStart = event.target.id.toLowerCase() === "start";
-  const isCursorOverNext = event.target.id.toLowerCase() === "next";
+  if (gameStarted) {
+    document.body.style.cursor = "none";
+    const isCursorOverStart = event.target.id.toLowerCase() === "start";
+    const isCursorOverNext = event.target.id.toLowerCase() === "next";
 
-  customCursor.style.left = event.clientX - customCursor.width / 2 + 28 + "px";
-  customCursor.style.top = event.clientY - customCursor.height / 2 + 78 + "px";
+    customCursor.style.left =
+      event.clientX - customCursor.width / 2 + 28 + "px";
+    customCursor.style.top =
+      event.clientY - customCursor.height / 2 + 78 + "px";
 
-  if (isCursorOverStart || isCursorOverNext) {
-    customCursor.style.display = "none";
-  } else {
-    customCursor.style.display = "block";
+    if (isCursorOverStart || isCursorOverNext) {
+      customCursor.style.display = "none";
+    } else {
+      customCursor.style.display = "block";
+    }
   }
 }
 
-document.addEventListener("mousemove", updateCursorPosition);
 
-document.addEventListener("DOMContentLoaded", function () {
-  const startButton = document.getElementById("start");
-  const nextButton = document.getElementById("next");
+const nextButton = document.getElementById("next");
+const next2Button = document.getElementById("next2");
+var nextSen = document.getElementById("nextSen");
   const startWrapper = document.getElementById("start-wrapper");
   const eggs = document.querySelectorAll(".egg");
   const quesBox = document.getElementById("q");
   const scoreDisplay = document.getElementById("score");
+
+document.addEventListener("mousemove", updateCursorPosition);
+
+document.addEventListener("DOMContentLoaded", function () {
+  
 
   let shuffledRiskNames, shuffledRiskDefinitions;
   let score = 0;
@@ -79,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
   scoreDisplay.innerHTML = `<strong style="position: absolute; top: 12px; right: 25px; font-size: 25px">${score}</strong>`;
 
   function shuffleArray(array) {
+    customCursor.style.display = "none";
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -87,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateScore(points) {
     if (gameOver) {
-
       return;
     }
     score += points;
@@ -107,15 +123,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     } else {
       quesBox.textContent = "Game Over!";
-      gameOver = 1;
+      
 
       eggs.forEach((egg) => {
         egg.removeEventListener("click");
       });
+
+      
+      
     }
+    
   }
 
   startButton.addEventListener("click", function () {
+    gameStarted = true;
     startWrapper.classList.add("hidden");
     quesBox.style.display = "block";
     nextButton.style.display = "block";
@@ -128,18 +149,25 @@ document.addEventListener("DOMContentLoaded", function () {
     shuffleArray(shuffledRiskNames);
     shuffleArray(shuffledRiskDefinitions);
     var brokenEgg;
+
     eggs.forEach((egg, index) => {
       egg.classList.add("show");
       egg.textContent = shuffledRiskNames[index];
 
       egg.addEventListener("click", function () {
-        if(gameOver === 1){Break;}
+        var minusone = document.getElementById("minusone");
+        var five = document.getElementById("five");
+        var threeStars = document.getElementById("threeStars");
+        if (gameOver === 1) {
+          Break;
+        }
         if (onceOnly == 0) {
           if (
             egg.textContent ===
             riskDefinitionsMap[shuffledRiskDefinitions[currentIndex]]
           ) {
             updateScore(5);
+
             corr_audio.volume = 0.1;
             corr_audio.play();
             onceOnly++;
@@ -148,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
             egg.textContent = "";
             egg.style.height = "75px";
             egg.style.width = "132px";
-       
 
             var top = getComputedStyle(egg).top;
 
@@ -167,6 +194,13 @@ document.addEventListener("DOMContentLoaded", function () {
             egg.style.left = newLeftNumeric + "px";
 
             brokenEgg = egg;
+
+            five.style.display = "block";
+            five.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)+ "px";
+            five.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft)+40+ "px";
+            threeStars.style.display = "block";
+            threeStars.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)-45+ "px";
+            threeStars.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft)+10+ "px";
           } else {
             updateScore(-1);
             wrong_audio.volume = 0.05;
@@ -177,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
             egg.textContent = "";
             egg.style.height = "75px";
             egg.style.width = "132px";
-       
 
             var top = getComputedStyle(egg).top;
 
@@ -186,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var newTopNumeric = currentTop + 20;
 
             egg.style.top = newTopNumeric + "px";
+
 
             var left = getComputedStyle(egg).left;
 
@@ -196,14 +230,46 @@ document.addEventListener("DOMContentLoaded", function () {
             egg.style.left = newLeftNumeric + "px";
 
             brokenEgg = egg;
+            minusone.style.top = parseFloat(getComputedStyle(brokenEgg).top) + "px";
+            minusone.style.left = parseFloat(getComputedStyle(brokenEgg).left) + "px";
+            minusone.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)-40+ "px";
+            minusone.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft) + 60+ "px";
+            minusone.style.display = "block";
+            
+          }
+          if (currentIndex === shuffledRiskDefinitions.length-1) {
+      
+      
+
+            eggs.forEach((egg, index) => {
+              egg.style.display = "none";
+              
+                });
+              
+            quesBox.style.display = "none";
+          
+            
+            nextButton.style.display = "none";
+            next2Button.style.display = "block";
+            final.style.display = "block";
+            nextSen.style.display = "block";
+           
+            
+            
+            
+      
           }
         }
+
       });
     });
 
     nextButton.addEventListener("click", function () {
-        if(gameOver === 1){return;}
+      if (gameOver === 1) {
         
+        return;
+      }
+
       if (gameOver !== 1 && eggClicked == 1) {
         brokenEgg.style.backgroundImage = "url('./assets/egg.png')";
 
@@ -222,19 +288,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var currentLeft = parseFloat(left);
 
-        var newLeftNumeric = currentLeft +20;
+        var newLeftNumeric = currentLeft + 20;
 
         brokenEgg.style.left = newLeftNumeric + "px";
+
         showNextDefinition();
+
+        minusone.style.display = "none";
+        five.style.display = "none";
+        threeStars.style.display = "none";
+        
         
 
-        
       }
-      
-      
-      
-
-      
     });
 
     quesBox.textContent = shuffledRiskDefinitions[currentIndex];
