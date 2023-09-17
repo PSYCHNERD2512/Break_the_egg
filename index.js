@@ -1,11 +1,11 @@
 const riskNames = [
-  "Interest Rate Risk",
-  "Credit Risk",
-  "Equity Market Risk",
-  "Currency Risk",
-  "Commodity Risk",
-  "Liquidity Risk",
-  "Volatility Risk",
+  ["Interest Rate Risk", "Interest"],
+  ["Credit Risk", "Credit"],
+  ["Equity Market Risk", "Equity"],
+  ["Currency Risk", "Currency"],
+  ["Commodity Risk", "Commodity"],
+  ["Liquidity Risk", "Liquidity"],
+  ["Volatility Risk", "Volatility"],
 ];
 
 const startButton = document.getElementById("start");
@@ -61,13 +61,14 @@ function updateCursorPosition(event) {
     document.body.style.cursor = "none";
     const isCursorOverStart = event.target.id.toLowerCase() === "start";
     const isCursorOverNext = event.target.id.toLowerCase() === "next";
+    const isCursorOverNext2 = event.target.id.toLowerCase() === "next2";
 
     customCursor.style.left =
       event.clientX - customCursor.width / 2 + 28 + "px";
     customCursor.style.top =
       event.clientY - customCursor.height / 2 + 78 + "px";
 
-    if (isCursorOverStart || isCursorOverNext) {
+    if (isCursorOverStart || isCursorOverNext || isCursorOverNext2) {
       customCursor.style.display = "none";
     } else {
       customCursor.style.display = "block";
@@ -75,20 +76,18 @@ function updateCursorPosition(event) {
   }
 }
 
-
 const nextButton = document.getElementById("next");
 const next2Button = document.getElementById("next2");
 var nextSen = document.getElementById("nextSen");
-  const startWrapper = document.getElementById("start-wrapper");
-  const eggs = document.querySelectorAll(".egg");
-  const quesBox = document.getElementById("q");
-  const scoreDisplay = document.getElementById("score");
-
+const startWrapper = document.getElementById("start-wrapper");
+const eggs = document.querySelectorAll(".egg");
+const quesBox = document.getElementById("q");
+const scoreDisplay = document.getElementById("score");
+const pointer = document.getElementById("pointer");
+const progress = document.getElementById("progress");
 document.addEventListener("mousemove", updateCursorPosition);
 
 document.addEventListener("DOMContentLoaded", function () {
-  
-
   let shuffledRiskNames, shuffledRiskDefinitions;
   let score = 0;
   let currentIndex = 0;
@@ -119,20 +118,20 @@ document.addEventListener("DOMContentLoaded", function () {
       shuffleArray(shuffledRiskNames);
 
       eggs.forEach((egg, index) => {
-        egg.textContent = shuffledRiskNames[index];
+        egg.textContent = shuffledRiskNames[index][0];
+        egg.style.color = "transparent";
+
+        egg.style.backgroundImage = `url('./assets/${shuffledRiskNames[index][1]}.png')`;
       });
     } else {
+      progress.style.display = "none";
+      pointer.style.display = "none";
       quesBox.textContent = "Game Over!";
-      
 
       eggs.forEach((egg) => {
         egg.removeEventListener("click");
       });
-
-      
-      
     }
-    
   }
 
   startButton.addEventListener("click", function () {
@@ -140,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     startWrapper.classList.add("hidden");
     quesBox.style.display = "block";
     nextButton.style.display = "block";
+    progress.style.display = "block";
+    pointer.style.display = "block";
     score = 0;
     scoreDisplay.innerHTML = `<strong style="position: absolute; top: 12px; right: 25px; font-size: 25px">${score}</strong>`;
     currentIndex = 0;
@@ -152,7 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     eggs.forEach((egg, index) => {
       egg.classList.add("show");
-      egg.textContent = shuffledRiskNames[index];
+      egg.textContent = shuffledRiskNames[index][0];
+      egg.style.color = "transparent";
+      egg.style.backgroundImage = `url('./assets/${shuffledRiskNames[index][1]}.png')`;
 
       egg.addEventListener("click", function () {
         var minusone = document.getElementById("minusone");
@@ -196,11 +199,15 @@ document.addEventListener("DOMContentLoaded", function () {
             brokenEgg = egg;
 
             five.style.display = "block";
-            five.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)+ "px";
-            five.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft)+40+ "px";
+            five.style.marginTop =
+              parseFloat(getComputedStyle(brokenEgg).marginTop) + "px";
+            five.style.marginLeft =
+              parseFloat(getComputedStyle(brokenEgg).marginLeft) + 40 + "px";
             threeStars.style.display = "block";
-            threeStars.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)-45+ "px";
-            threeStars.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft)+10+ "px";
+            threeStars.style.marginTop =
+              parseFloat(getComputedStyle(brokenEgg).marginTop) - 45 + "px";
+            threeStars.style.marginLeft =
+              parseFloat(getComputedStyle(brokenEgg).marginLeft) + 10 + "px";
           } else {
             updateScore(-1);
             wrong_audio.volume = 0.05;
@@ -220,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             egg.style.top = newTopNumeric + "px";
 
-
             var left = getComputedStyle(egg).left;
 
             var currentLeft = parseFloat(left);
@@ -230,47 +236,44 @@ document.addEventListener("DOMContentLoaded", function () {
             egg.style.left = newLeftNumeric + "px";
 
             brokenEgg = egg;
-            minusone.style.top = parseFloat(getComputedStyle(brokenEgg).top) + "px";
-            minusone.style.left = parseFloat(getComputedStyle(brokenEgg).left) + "px";
-            minusone.style.marginTop=parseFloat(getComputedStyle(brokenEgg).marginTop)-40+ "px";
-            minusone.style.marginLeft=parseFloat(getComputedStyle(brokenEgg).marginLeft) + 60+ "px";
+            minusone.style.top =
+              parseFloat(getComputedStyle(brokenEgg).top) + "px";
+            minusone.style.left =
+              parseFloat(getComputedStyle(brokenEgg).left) + "px";
+            minusone.style.marginTop =
+              parseFloat(getComputedStyle(brokenEgg).marginTop) - 40 + "px";
+            minusone.style.marginLeft =
+              parseFloat(getComputedStyle(brokenEgg).marginLeft) + 60 + "px";
             minusone.style.display = "block";
-            
           }
-          if (currentIndex === shuffledRiskDefinitions.length-1) {
-      
-      
+          if (currentIndex === shuffledRiskDefinitions.length - 1) {
+            setTimeout(function () {
+              eggs.forEach((egg, index) => {
+                egg.style.display = "none";
+              });
 
-            eggs.forEach((egg, index) => {
-              egg.style.display = "none";
-              
-                });
-              
-            quesBox.style.display = "none";
-          
-            
-            nextButton.style.display = "none";
-            next2Button.style.display = "block";
-            final.style.display = "block";
-            nextSen.style.display = "block";
-           
-            
-            
-            
-      
+              quesBox.style.display = "none";
+              minusone.style.display = "none";
+        five.style.display = "none";
+        threeStars.style.display = "none";
+        pointer.style.display="none";
+        progress.style.display = "none";
+
+              nextButton.style.display = "none";
+              next2Button.style.display = "block";
+              final.style.display = "block";
+              nextSen.style.display = "block";
+            }, 1000);
           }
         }
-
       });
     });
 
     nextButton.addEventListener("click", function () {
-      if (gameOver === 1) {
-        
-        return;
-      }
+      minusone.style.display = "none";
+        five.style.display = "none";
+        threeStars.style.display = "none";
 
-      if (gameOver !== 1 && eggClicked == 1) {
         brokenEgg.style.backgroundImage = "url('./assets/egg.png')";
 
         brokenEgg.style.height = "98px";
@@ -290,17 +293,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var newLeftNumeric = currentLeft + 20;
 
+        
+
+        var leftP = getComputedStyle(pointer).left;
+
+        var currentLeftP = parseFloat(leftP);
+
+        var newLeftNumericP = currentLeftP + 29.37;
+        if(score === 1 && currentIndex == 1){
+          
+        }
+
+        pointer.style.left = newLeftNumericP + "px";
+
+
+
         brokenEgg.style.left = newLeftNumeric + "px";
+        
+       
 
         showNextDefinition();
-
-        minusone.style.display = "none";
-        five.style.display = "none";
-        threeStars.style.display = "none";
-        
-        
-
-      }
+      
     });
 
     quesBox.textContent = shuffledRiskDefinitions[currentIndex];

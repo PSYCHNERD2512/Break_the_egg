@@ -142,7 +142,7 @@ display: none;
 .egg {
   all: unset;
 
-  background-image: url(./assets/egg.png);
+  /* background-image: url(./assets/egg.png); */
   position: absolute;
   background-size: cover;
   width: 85px;
@@ -158,31 +158,31 @@ display: none;
 }
 
 .a1 {
-  margin-left: 70px;
+  margin-left: 20px;
   margin-top: 90px;
 }
 .a2 {
-  margin-left: 300px;
+  margin-left: 250px;
   margin-top: 70px;
 }
 .a3 {
-  margin-left: 530px;
+  margin-left: 480px;
   margin-top: 70px;
 }
 .a4 {
-  margin-left: 760px;
+  margin-left: 710px;
   margin-top: 90px;
 }
 .a5 {
-  margin-left: 185px;
+  margin-left: 135px;
   margin-top: 180px;
 }
 .a6 {
-  margin-left: 415px;
+  margin-left: 365px;
   margin-top: 160px;
 }
 .a7 {
-  margin-left: 645px;
+  margin-left: 595px;
   margin-top: 180px;
 }
 
@@ -256,6 +256,32 @@ display: none;
    
     display: none;
    
+  }
+
+  #progress{
+    background-image: url("./assets/progress.png");
+    background-size: cover;
+    height: 20px;
+    width: 205.6px;
+    
+    top: 15px;
+    left: 555px;
+    position: absolute;
+    display: none;
+  }
+  
+  #pointer{
+    background-image: url("./assets/pointer.png");
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    
+    top: 35px;
+    left: 555px;
+    position: absolute;
+    display: none;
+    
+
   }
 
   #minusone{
