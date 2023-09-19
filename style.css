@@ -73,14 +73,14 @@ body {
 }
 #final {
   color: white;
-  width: 700px;
-  height: 339px;
+  width: 583px;
+  height: 282px;
   text-align: center;
   background-image: url(./assets/result.png);
   background-size: cover;
   position: absolute;
-  top: 30px;
-  margin-left: 60px;
+  top: 70px;
+  margin-left: 160px;
   font-size: 18px;
   left: 0;
   display: none;
@@ -95,9 +95,10 @@ body {
   background-image: url(./assets/next_sen.png);
   background-size: cover;
   position: absolute;
-  top: 370px;
-  margin-left: 80px;
-display: none;
+  top: 355px;
+  margin-left: 180px;
+  display: none;
+
 
  }
 
@@ -206,6 +207,8 @@ display: none;
 }
 
 #next {
+  display:none;
+  
   all: unset;
   color: white;
   width: 155px;

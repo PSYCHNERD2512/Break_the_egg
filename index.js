@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
     gameStarted = true;
     startWrapper.classList.add("hidden");
     quesBox.style.display = "block";
-    nextButton.style.display = "block";
+    
     progress.style.display = "block";
     pointer.style.display = "block";
     score = 0;
@@ -170,7 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
             riskDefinitionsMap[shuffledRiskDefinitions[currentIndex]]
           ) {
             updateScore(5);
-
+            if(currentIndex < 6)
+            nextButton.style.display = "block"; 
+           
             corr_audio.volume = 0.1;
             corr_audio.play();
             onceOnly++;
@@ -210,6 +212,9 @@ document.addEventListener("DOMContentLoaded", function () {
               parseFloat(getComputedStyle(brokenEgg).marginLeft) + 10 + "px";
           } else {
             updateScore(-1);
+            if(currentIndex < 6)
+            nextButton.style.display = "block";
+          
             wrong_audio.volume = 0.05;
             wrong_audio.play();
             onceOnly++;
@@ -247,10 +252,12 @@ document.addEventListener("DOMContentLoaded", function () {
             minusone.style.display = "block";
           }
           if (currentIndex === shuffledRiskDefinitions.length - 1) {
-            setTimeout(function () {
+ 
               eggs.forEach((egg, index) => {
                 egg.style.display = "none";
               });
+              final.style.display = "block";
+              nextSen.style.display = "block";
 
               quesBox.style.display = "none";
               minusone.style.display = "none";
@@ -261,9 +268,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
               nextButton.style.display = "none";
               next2Button.style.display = "block";
-              final.style.display = "block";
-              nextSen.style.display = "block";
-            }, 1000);
+              
+    
           }
         }
       });
@@ -309,6 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         brokenEgg.style.left = newLeftNumeric + "px";
+        nextButton.style.display = "none";
         
        
 
