@@ -7,7 +7,7 @@ const riskNames = [
   ["Liquidity Risk", "Liquidity"],
   ["Volatility Risk", "Volatility"],
 ];
-
+var cor = 0;
 const startButton = document.getElementById("start");
 
 var onceOnly = 0;
@@ -82,6 +82,13 @@ var nextSen = document.getElementById("nextSen");
 const startWrapper = document.getElementById("start-wrapper");
 const eggs = document.querySelectorAll(".egg");
 const quesBox = document.getElementById("q");
+const ga = document.getElementById("ga");
+const gb = document.getElementById("gb");
+const gc = document.getElementById("gc");
+const gd = document.getElementById("gd");
+const ge = document.getElementById("ge");
+const gl = document.getElementById("GL");
+const gr = document.getElementById("GR");
 const scoreDisplay = document.getElementById("score");
 const pointer = document.getElementById("pointer");
 const progress = document.getElementById("progress");
@@ -168,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (
             egg.textContent ===
             riskDefinitionsMap[shuffledRiskDefinitions[currentIndex]]
-          ) {
+          ) {cor = 1;
             updateScore(5);
             if(currentIndex < 6)
             nextButton.style.display = "block"; 
@@ -210,6 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
               parseFloat(getComputedStyle(brokenEgg).marginTop) - 45 + "px";
             threeStars.style.marginLeft =
               parseFloat(getComputedStyle(brokenEgg).marginLeft) + 10 + "px";
+
+
+              
           } else {
             updateScore(-1);
             if(currentIndex < 6)
@@ -264,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         five.style.display = "none";
         threeStars.style.display = "none";
         pointer.style.display="none";
-        progress.style.display = "none";
+
 
               nextButton.style.display = "none";
               next2Button.style.display = "block";
@@ -298,6 +308,34 @@ document.addEventListener("DOMContentLoaded", function () {
         var currentLeft = parseFloat(left);
 
         var newLeftNumeric = currentLeft + 20;
+        if(cor == 1){
+        switch(currentIndex){
+          case 0:
+            gl.style.display = "block";
+            break;
+          case 1:
+            ga.style.display = "block";
+            break;
+          case 2:
+            gb.style.display = "block";
+            break;
+          case 3:
+            gc.style.display = "block";
+            break;
+          case 4:
+            gd.style.display = "block";
+            break;
+          case 5:
+            ge.style.display = "block";
+            break;
+          case 6:
+            gr.style.display = "block";
+          break;
+
+
+        }}
+
+        cor = 0;
 
         
 
@@ -305,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var currentLeftP = parseFloat(leftP);
 
-        var newLeftNumericP = currentLeftP + 29.37;
+        var newLeftNumericP = currentLeftP + 32;
         if(score === 1 && currentIndex == 1){
           
         }

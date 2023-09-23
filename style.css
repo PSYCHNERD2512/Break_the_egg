@@ -264,8 +264,8 @@ body {
   #progress{
     background-image: url("./assets/progress.png");
     background-size: cover;
-    height: 20px;
-    width: 205.6px;
+    height: 22px;
+    width: 240px;
     
     top: 15px;
     left: 555px;
@@ -280,7 +280,7 @@ body {
     width: 20px;
     
     top: 35px;
-    left: 555px;
+    left: 551px;
     position: absolute;
     display: none;
     
@@ -318,4 +318,59 @@ body {
    
    
   }
+
+  
+  #GL{
+    background-image: url('./assets/GL.png');
+    height: 12px;
+    width: 34px;
+    background-size: cover;
+    
+    top: 20px;
+    left: 559px;
+    position: absolute;
+    display: none;
+  }
+
+  .GM{
+    background-image: url('./assets/GM.png');
+    height: 12px;
+    width: 33px;
+    background-size: cover;
+    background-position: top right;
+   
+    top: 20px;
+    left: 592px;
+    position: absolute;
+    display: none;
+
+  }
+  #gb{
+    left:624px;
+   
+  }
+  #gc{width:34px;
+    left:656px;
+    
+  }
+  #gd{
+    left:689px;
+  }
+  #ge{
+    left:720px;
+  }
+  #GR{
+    background-image: url('./assets/GR.png');
+    height: 12px;
+    width: 34px;
+    background-size: cover;
+    background-position: top right;
+    display: none;
+   
+    top: 20px;
+    left: 756px;
+    position: absolute;
+  }
+
+  
   
