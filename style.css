@@ -264,7 +264,7 @@ body {
   #progress{
     background-image: url("./assets/progress.png");
     background-size: cover;
-    height: 22px;
+    height: 23px;
     width: 240px;
     
     top: 15px;
@@ -323,10 +323,10 @@ body {
   #GL{
     background-image: url('./assets/GL.png');
     height: 12px;
-    width: 34px;
+    width: 36px;
     background-size: cover;
     
-    top: 20px;
+    top: 21px;
     left: 559px;
     position: absolute;
     display: none;
@@ -335,11 +335,11 @@ body {
   .GM{
     background-image: url('./assets/GM.png');
     height: 12px;
-    width: 33px;
+    width: 36px;
     background-size: cover;
     background-position: top right;
    
-    top: 20px;
+    top: 21px;
     left: 592px;
     position: absolute;
     display: none;
@@ -362,12 +362,12 @@ body {
   #GR{
     background-image: url('./assets/GR.png');
     height: 12px;
-    width: 34px;
+    width: 36px;
     background-size: cover;
     background-position: top right;
     display: none;
    
-    top: 20px;
+    top: 21px;
     left: 756px;
     position: absolute;
   }
