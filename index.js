@@ -262,10 +262,29 @@ document.addEventListener("DOMContentLoaded", function () {
             minusone.style.display = "block";
           }
           if (currentIndex === shuffledRiskDefinitions.length - 1) {
+            var leftP = getComputedStyle(pointer).left;
+
+        var currentLeftP = parseFloat(leftP);
+        var t;
+        
+        
+
+       
+            if(currentIndex == 6 ){
+              t = 35;
+            }
+            var newLeftNumericP = currentLeftP + t;
+            pointer.style.left = newLeftNumericP + "px";
+            if(cor == 1){
+              gr.style.display = "block";
+            }
+            
+            
  
               eggs.forEach((egg, index) => {
                 egg.style.display = "none";
               });
+              pointer.style.display = "none";
               final.style.display = "block";
               nextSen.style.display = "block";
 
@@ -273,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
               minusone.style.display = "none";
         five.style.display = "none";
         threeStars.style.display = "none";
-        pointer.style.display="none";
+          
 
 
               nextButton.style.display = "none";
