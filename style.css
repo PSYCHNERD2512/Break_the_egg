@@ -264,13 +264,13 @@ body {
   #progress{
     background-image: url("./assets/progress.png");
     background-size: cover;
-    height: 23px;
-    width: 240px;
+    height: 23.75px;
+    width: 242px;
     
     top: 15px;
     left: 555px;
     position: absolute;
-    display: none;
+    /* display: none; */
   }
   
   #pointer{
@@ -322,53 +322,58 @@ body {
   
   #GL{
     background-image: url('./assets/GL.png');
-    height: 12px;
-    width: 36px;
+    height: 14.75px;
+    width: 30px;
     background-size: cover;
     
-    top: 21px;
+    top: 20px;
     left: 559px;
     position: absolute;
-    display: none;
+    /* display: none; */
   }
 
   .GM{
     background-image: url('./assets/GM.png');
-    height: 12px;
-    width: 36px;
+    height: 14.75px;
+    width: 32.75px;
     background-size: cover;
     background-position: top right;
    
-    top: 21px;
-    left: 592px;
+    top: 20px;
+    left: 590.5px;
     position: absolute;
-    display: none;
+    /* display: none; */
 
   }
   #gb{
-    left:624px;
+    left:624.8px;
+    width: 33px;
+    
    
   }
-  #gc{width:34px;
-    left:656px;
+  #gc{
+    left:659.3px;
+    width: 33px;
     
   }
   #gd{
-    left:689px;
+    left:694px;
+    width: 33.3px;
   }
   #ge{
-    left:720px;
+    left:729px;
+    width: 33px;
   }
   #GR{
     background-image: url('./assets/GR.png');
-    height: 12px;
-    width: 36px;
+    height: 14.75px;
+    width: 30px;
     background-size: cover;
     background-position: top right;
-    display: none;
+    /* display: none; */
    
-    top: 21px;
-    left: 756px;
+    top: 20px;
+    left: 763.35px;
     position: absolute;
   }
 

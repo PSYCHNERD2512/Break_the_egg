@@ -342,8 +342,19 @@ document.addEventListener("DOMContentLoaded", function () {
         var leftP = getComputedStyle(pointer).left;
 
         var currentLeftP = parseFloat(leftP);
+        var t;
+        if(currentIndex == 0){
+          t = 29.40;
+        }
+        else if(currentIndex == 1 ){
+          t = 33;
+        }
+        else if(currentIndex == 2 || currentIndex == 3||currentIndex == 4||currentIndex == 5||currentIndex == 6){
+          t = 35;
+        }
+        
 
-        var newLeftNumericP = currentLeftP + 32;
+        var newLeftNumericP = currentLeftP + t;
         if(score === 1 && currentIndex == 1){
           
         }
