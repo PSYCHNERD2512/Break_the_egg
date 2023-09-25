@@ -270,7 +270,7 @@ body {
     top: 15px;
     left: 555px;
     position: absolute;
-    /* display: none; */
+    display: none;
   }
   
   #pointer{
@@ -329,7 +329,7 @@ body {
     top: 20px;
     left: 559px;
     position: absolute;
-    /* display: none; */
+    display: none;
   }
 
   .GM{
@@ -342,7 +342,7 @@ body {
     top: 20px;
     left: 590.5px;
     position: absolute;
-    /* display: none; */
+    display: none;
 
   }
   #gb{
@@ -370,7 +370,7 @@ body {
     width: 30px;
     background-size: cover;
     background-position: top right;
-    /* display: none; */
+    display: none;
    
     top: 20px;
     left: 763.35px;
