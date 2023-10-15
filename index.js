@@ -63,7 +63,7 @@ var player;
 var initScore;
 
 function updateCursorPosition(event) {
-  if (gameStarted) {
+  if (gameStarted && !final.style.display || final.style.display === 'none') {
     document.body.style.cursor = 'none';
     const isCursorOverStart = event.target.id.toLowerCase() === 'start';
     const isCursorOverNext = event.target.id.toLowerCase() === 'next';
@@ -79,8 +79,12 @@ function updateCursorPosition(event) {
     } else {
       customCursor.style.display = 'block';
     }
+  } else {
+    document.body.style.cursor = 'default'; 
+    customCursor.style.display = 'none';
   }
 }
+
 
 const nextButton = document.getElementById('next');
 const next2Button = document.getElementById('next2');
@@ -293,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pointer.style.display = 'none';
             final.style.display = 'block';
             nextSen.style.display = 'block';
-
+            
             quesBox.style.display = 'none';
             minusone.style.display = 'none';
             five.style.display = 'none';
@@ -301,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             nextButton.style.display = 'none';
             next2Button.style.display = 'block';
+            
 
             // Update score to storyboard
             if (player) {
